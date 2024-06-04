@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Volcando estructura de base de datos para tiendadb
-CREATE DATABASE IF NOT EXISTS `tiendadb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `tiendadb`;
+-- Volcando estructura de base de datos para pwdata
+CREATE DATABASE IF NOT EXISTS `pwdata` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `pwdata`;
 
--- Volcando estructura para tabla tiendadb.articulos
+-- Volcando estructura para tabla pwdata.articulos
 CREATE TABLE IF NOT EXISTS `articulos` (
   `claveArticulo` int(11) NOT NULL,
   `descripcion` varchar(150) DEFAULT '',
@@ -28,13 +28,13 @@ CREATE TABLE IF NOT EXISTS `articulos` (
   PRIMARY KEY (`claveArticulo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla tiendadb.articulos: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla pwdata.articulos: ~3 rows (aproximadamente)
 INSERT INTO `articulos` (`claveArticulo`, `descripcion`, `existencia`, `precio`) VALUES
 	(1, 'Coca Cola', 12, 20),
 	(2, 'Buffalo', 25, 15),
 	(3, 'Takis', 4, 23);
 
--- Volcando estructura para tabla tiendadb.clientes
+-- Volcando estructura para tabla pwdata.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` int(11) NOT NULL,
   `nombre` varchar(150) DEFAULT '',
@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla tiendadb.clientes: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla pwdata.clientes: ~3 rows (aproximadamente)
 INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `direccion`, `telefono`, `rfc`, `curp`, `cp`) VALUES
 	(1, 'Luis Carlos', 'Lie ', 'Lopez Mateos', '1234567890', 'ABCDE1234567891', 'ABCDE1234567891231', 80921),
 	(2, 'Jesus Alfredo', 'Iniguez', 'Quintas', '1234567891', 'ABCDE1234567892', 'ABCDE1234567891232', 80922),
 	(3, 'Joel', 'Olvera', 'Huizaches', '1234567892', 'ABCDE1234567893', 'ABCDE1234567891233', 80923);
 
--- Volcando estructura para tabla tiendadb.vendedores
+-- Volcando estructura para tabla pwdata.vendedores
 CREATE TABLE IF NOT EXISTS `vendedores` (
   `idVendedor` int(11) NOT NULL,
   `nombre` varchar(150) DEFAULT '',
@@ -62,13 +62,13 @@ CREATE TABLE IF NOT EXISTS `vendedores` (
   PRIMARY KEY (`idVendedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla tiendadb.vendedores: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla pwdata.vendedores: ~3 rows (aproximadamente)
 INSERT INTO `vendedores` (`idVendedor`, `nombre`, `apellido`, `departamentoTienda`) VALUES
 	(1, 'Elizabeht', 'Zavala', 'Ventas'),
 	(2, 'Diana', 'Moreno', 'Ventas'),
 	(3, 'Johana', 'Aispuro', 'Ventas');
 
--- Volcando estructura para tabla tiendadb.ventas
+-- Volcando estructura para tabla pwdata.ventas
 CREATE TABLE IF NOT EXISTS `ventas` (
   `claveArticulo` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   CONSTRAINT `FK_ventas_vendedores` FOREIGN KEY (`idVendedor`) REFERENCES `vendedores` (`idVendedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla tiendadb.ventas: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla pwdata.ventas: ~3 rows (aproximadamente)
 INSERT INTO `ventas` (`claveArticulo`, `cantidad`, `precio`, `fecha`, `idVendedor`) VALUES
 	(1, 2, 40, '2024-06-01', 1),
 	(2, 3, 45, '2024-12-25', 2),

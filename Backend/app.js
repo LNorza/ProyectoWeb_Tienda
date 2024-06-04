@@ -16,7 +16,7 @@ let connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: 'Invermex2018!',
-    database: 'tiendadb',
+    database: 'pwdata',
     port: 3306,
 });
 connection.connect((error) => {
