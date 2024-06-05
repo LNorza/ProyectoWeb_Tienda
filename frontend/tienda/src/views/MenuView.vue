@@ -12,6 +12,7 @@
                     <li class="nav-item">
                         <RouterLink class="navbar-brand" to="/clientes">Clientes</RouterLink>
                         <RouterLink class="navbar-brand" to="/vendedores">Vendedores</RouterLink>
+                        <RouterLink class="navbar-brand" to="/articulos">Articulos</RouterLink>
                         <RouterLink class="navbar-brand" to="/ventas">Ventas</RouterLink>
                         <RouterLink class="navbar-brand" to="/clientes/registro">Registro</RouterLink>
                         <RouterLink class="navbar-brand" to="/clientes/entrada"> Entrada</RouterLink>

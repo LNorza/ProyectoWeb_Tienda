@@ -17,12 +17,12 @@ import { getAuth } from "firebase/auth";
 import vendedores from '@/views/Vendedores/vendedores.vue';
 import vendedoresCreateView from '@/views/Vendedores/vendedoresCreateView.vue';
 import vendedoresEditarView from '@/views/Vendedores/vendedoresEditarView.vue';
+
+import Articulos from '@/views/Articulos/Articulos.vue';
+import ArticulosCreateView from '@/views/Articulos/ArticulosCreateView.vue';
+import ArticulosEditView from '@/views/Articulos/ArticulosEditView.vue';
+
 import VentasView from '@/views/Ventas/VentasView.vue'
-
-
-
-
-
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +32,7 @@ const router = createRouter({
             name: 'home',
             component: HomeView
         },
+
         {
             path: '/clientes',
             name: 'clientes',
@@ -40,65 +41,84 @@ const router = createRouter({
                 requireAuth: true,
             }
         },
+
         {
             path: '/proveedores',
             name: 'proveedores',
             component: () => import('../views/ProveedoresView.vue')
-        }
-        ,
+        },
+
         {
             path: '/ventas',
             name: 'ventas',
             component: VentasView,
-        }
-        ,
+        },
+
         {
             path: '//clientes/create',
             name: 'clientesCreate',
             component: clientesCreateView
         },
+
         {
             path: '/clientes/:id/edit',
             name: 'clientesEditar',
             component: ClientesEditarView
-        }
-        ,
+        },
+
         {
             path: '/clientes/registro',
             name: 'Registro',
             component: RegistroView
-        }
-        ,
+        },
+
         {
             path: '/clientes/entrada',
             name: 'entrada',
             component: EntradaView
-        }
-        ,
+        },
+
         {
             path: '/clientes/noautorizar',
             name: 'noautorizar',
             component: NoAutorizaView
-        }
-        ,
+        },
+
         {
             path: '/vendedores',
             name: 'vendedores',
             component: vendedores
-        }
-        ,
+        },
+
         {
             path: '/vendedores/create',
             name: 'vendedoresCreate',
             component: vendedoresCreateView
-        }
-        ,
+        },
+
         {
             path: '/vendedores/:id/edit',
             name: 'vendedoresEditar',
             component: vendedoresEditarView
+        },
+
+        {
+            path: '/articulos',
+            name: 'Articulos',
+            component: Articulos
+        },
+
+        {
+            path: '/articulos/:id/edit',
+            name: 'ArticulosEditar',
+            component: ArticulosEditView
+        },
+
+        {
+            path: '/articulos/create',
+            name: 'ArticulosCreate',
+            component: ArticulosCreateView
         }
-        ,
     ]
 })
 

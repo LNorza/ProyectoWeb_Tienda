@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
+        <div class="card bg-dark">
+            <div class="card-header text-white border-1 border-white border-opacity-50">
                 <h4>Registrar Venta</h4>
                 <div v-if="mensaje == 1" class="alert alert-success" role="alert">
                     Artículo agregado con éxito
@@ -9,9 +9,10 @@
                 <div v-if="mensajeCompra == 1" class="alert alert-primary" role="alert">
                     Compra con exito
                 </div>
+
             </div>
             <div class="card-body">
-                <div class="mb-3 row ">
+                <div class="mb-3 row  text-white">
                     <div class="col-md-6">
                         <label for="articulo" class="form-label">Artículo</label>
                         <select v-model="articuloSeleccionado" @change="calcularPrecioTotal" id="articulo"
@@ -48,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="mb-3" v-if="mensaje == 1">
+                <div class="mb-3  text-white" v-if="mensaje == 1">
                     <h5>Lista de Artículos:</h5>
                     <ul>
                         <li v-for="(item, index) in listaArticulos" :key="index">

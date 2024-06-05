@@ -1,66 +1,68 @@
 <template>
-    <section class="vh-100" >
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong background-table text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
 
-                <h3 class="mb-5">Entrada</h3>
-                <div v-if="mensaje" class="alert alert-danger" role="alert">
-                   {{ mensaje }}
+                            <h3 class="mb-5">Entrada</h3>
+                            <div v-if="mensaje" class="alert alert-danger" role="alert">
+                                {{ mensaje }}
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input v-model="correo" type="email" id="typeEmailX-2"
+                                    class="form-control form-control-lg" />
+                                <label class="form-label mt-2 fs-5" for="typeEmailX-2">Correo</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input v-model="password" type="password" id="typePasswordX-2"
+                                    class="form-control form-control-lg" />
+                                <label class="form-label mt-2 fs-5" for="typePasswordX-2">Contraseña</label>
+                            </div>
+
+                            <button @click.prevent="registro()" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-primary btn-lg btn-block me-3 w-25" type="submit">
+                                Entrar
+                            </button>
+
+                            <button @click.prevent="registroGoogle()" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-outline-dark btn-lg btn-block bg-white" type="submit">
+                                <Icon icon="logos:google-icon" /> Google
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-                <div data-mdb-input-init class="form-outline mb-4">
-                <input v-model="correo" type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX-2">Correo</label>
-                </div>
-
-                <div data-mdb-input-init class="form-outline mb-4">
-                <input v-model="password" type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Contraseña</label>
-                </div>
-
-
-
-                <button @click.prevent="registro()" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">
-                    Validar
-                </button>
-                <p></p>
-                <button @click.prevent="registroGoogle()" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-lg btn-block" type="submit">
-                   <Icon icon="logos:google-icon" /> Google
-                </button>
-            </div>
             </div>
         </div>
-        </div>
-    </div>
-</section>
+    </section>
 </template>
 <script>
-    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup  } from 'firebase/auth';
-    import { Icon } from '@iconify/vue'
-    
-    export default{
-        name:"RegistroView",
-        components:{ Icon },
-        data(){
-            return{
-                correo: '',
-                password: '',
-                mensaje: ''
-            }
-        },
-        methods:{
-            registro(){
-               signInWithEmailAndPassword(getAuth(),this.correo,this.password)
-               .then((data) => {
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Icon } from '@iconify/vue'
+
+export default {
+    name: "RegistroView",
+    components: { Icon },
+    data() {
+        return {
+            correo: '',
+            password: '',
+            mensaje: ''
+        }
+    },
+    methods: {
+        registro() {
+            signInWithEmailAndPassword(getAuth(), this.correo, this.password)
+                .then((data) => {
                     this.mensaje = ''
                     this.correo = ''
                     this.password = ''
-               } )
-               .catch((error) => {
-                    switch(error.code){
+                })
+                .catch((error) => {
+                    switch (error.code) {
                         case "auth/invalid-email":
                             this.mensaje = "Correo no válido";
                             break;
@@ -74,15 +76,21 @@
                             this.mensaje = "Correo o contraseña incorrecta";
                             break;
                     }
-               })
-            },
-            registroGoogle(){
-                const provider = new GoogleAuthProvider();
-                signInWithPopup(getAuth(),provider)
-                .then((result) =>{
+                })
+        },
+        registroGoogle() {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(getAuth(), provider)
+                .then((result) => {
                     this.$router.push('/clientes/')
                 })
-            }
         }
     }
+}
 </script>
+
+<style scoped>
+.background-table {
+    background-color: #212529;
+}
+</style>
