@@ -23,6 +23,7 @@ import ArticulosCreateView from '@/views/Articulos/ArticulosCreateView.vue';
 import ArticulosEditView from '@/views/Articulos/ArticulosEditView.vue';
 
 import VentasView from '@/views/Ventas/VentasView.vue'
+import detalleVenta from '@/views/DetalleVentas/detalleVentaView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +31,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeView
+            component: detalleVenta
         },
 
         {
@@ -118,6 +119,12 @@ const router = createRouter({
             path: '/articulos/create',
             name: 'ArticulosCreate',
             component: ArticulosCreateView
+        },
+
+        {
+            path: '/detalleventas',
+            name: 'detalleventas',
+            component: detalleVenta
         }
     ]
 })
